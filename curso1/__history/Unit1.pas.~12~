@@ -1,0 +1,48 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    Button1: TButton;
+    edtNome: TEdit;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+    s : string;
+
+    procedure ExibeVariavel(Valor : Integer);
+    function fncExibeTexto : string;
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  Global : String;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+  Global := fncExibeTexto;
+  ExibeVariavel(StrToInt(Global));
+end;
+
+procedure TForm1.ExibeVariavel(Valor : Integer);
+begin
+  ShowMessage(IntToStr(Valor));
+end;
+
+function Tform1.fncExibeTexto;
+begin
+  Result := edtNome.Text;
+end;
+
+end.
